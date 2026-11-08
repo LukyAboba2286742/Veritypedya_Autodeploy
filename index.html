@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+
+<html lang="ru" class="scroll-smooth">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ВЕРИТИПЕДИЯ — Энциклопедия мистических существ</title>
+
+    <meta name="description" content="ВЕРИТИПЕДИЯ — древний цифровой фолиант, классифицирующий загадочных сферических существ. Каталог видов, досье и архив аномальных сущностей 2026 года.">
+
+    <meta property="og:title" content="ВЕРИТИПЕДИЯ — Энциклопедия мистических существ">
+
+    <meta property="og:description" content="Древний цифровой фолиант, классифицирующий загадочных сферических существ.">
+
+    <meta property="og:type" content="website">
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23FFD700'/%3E%3C/svg%3E">
+
+    <!-- Шрифты Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+
+        tailwind.config = {
+
+            theme: {
+
+                extend: {
+
+                    fontFamily: {
+
+                        cinzel: ['Cinzel', 'serif'],
+
+                        inter: ['Inter', 'sans-serif'],
+
+                    },
+
+                    colors: {
+
+                        verity: '#FFD700',
+
+                        falsity: '#0055FF',
+
+                        lovity: '#FF99BB',
+
+                        cruelty: '#FF2222',
+
+                        negativity: '#222222',
+
+                        curiosity: '#00CC44',
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    </script>
+
+    <!-- Собственные стили страницы -->
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body class="bg-[#050505] text-gray-200 antialiased selection:bg-yellow-500 selection:text-black">
+
+
+    <!-- Фоновый мистический шум/градиент -->
+
+    <div class="fixed inset-0 pointer-events-none z-0 opacity-20 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.15),rgba(255,255,255,0))]"></div>
+
+
+    <!-- Шапка / Навигация -->
+
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-black/80 border-b border-white/10">
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
+
+            <a href="#hero" class="font-cinzel text-xl sm:text-2xl font-bold tracking-widest text-white hover:text-yellow-400 transition-colors whitespace-nowrap">
+
+                VERITY<span class="text-yellow-400">PEDIA</span>
+
+            </a>
+
+            <nav class="hidden md:flex space-x-8 text-sm uppercase tracking-wider text-gray-400">
+
+                <a href="#catalog" data-i18n="navSpecies" class="hover:text-white transition-colors">Виды</a>
+
+                <a href="#about" data-i18n="navAbout" class="hover:text-white transition-colors">О феномене</a>
+
+                <a href="#contacts" data-i18n="navContacts" class="hover:text-white transition-colors">Контакты</a>
+
+            </nav>
+
+            <div class="flex items-center gap-2 sm:gap-3">
+
+                <button id="langToggle" onclick="toggleLang()" data-i18n-title="langToggleTitle" title="Switch to English" class="text-xs font-mono tracking-widest text-gray-400 border border-white/10 px-3 py-1.5 rounded-full hover:text-white hover:border-white/25 transition-colors">
+
+                    EN
+
+                </button>
+
+                <button onclick="openRandomSpecies()" data-i18n-title="randomTitle" title="Случайный вид" class="text-xs font-mono text-gray-400 border border-white/10 px-2.5 py-1.5 rounded-full hover:text-white hover:border-white/25 transition-colors flex items-center gap-1">
+
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+
+                    <span class="hidden sm:inline">RND</span>
+
+                </button>
+
+                <button id="favToggleBtn" onclick="toggleFavoritesOnly()" data-i18n-title="favTitle" title="Виды в избранном" class="flex items-center gap-1.5 text-xs font-mono text-gray-500 border border-white/10 px-3 py-1.5 rounded-full hover:text-yellow-400 hover:border-yellow-500/40 transition-colors">
+
+                    <svg class="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+
+                    <span id="favCount">0</span>
+
+                </button>
+
+                <div class="hidden sm:block text-xs font-mono text-gray-500 border border-white/10 px-3 py-1.5 rounded-full">
+
+                    ARCV-2026.SYS
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- Главный раздел -->
+
+    <section id="hero" class="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-4 pt-12 pb-20 z-10">
+
+        <div class="absolute inset-0 -z-10 flex items-center justify-center opacity-10 pointer-events-none">
+
+            <div class="w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] rounded-full bg-yellow-500 blur-[140px]"></div>
+
+        </div>
+
+
+        <div class="inline-block mb-4 px-4 py-1.5 rounded-full border border-yellow-500/30 bg-yellow-500/10 text-yellow-400 text-xs sm:text-sm tracking-widest uppercase font-mono reveal" data-i18n="heroBadge">
+
+            Энциклопедия аномальных сущностей • Релиз 2026
+
+        </div>
+
+
+        <!-- Картинка Верити рядом с названием -->
+
+        <div class="w-24 h-24 sm:w-32 sm:h-32 mb-6 rounded-full overflow-hidden border-2 border-yellow-500/50 shadow-[0_0_25px_rgba(255,215,0,0.3)] reveal">
+
+            <img src="Verity.webp" alt="Верити" class="w-full h-full object-cover">
+
+        </div>
+
+
+        <h1 class="font-cinzel text-5xl sm:text-7xl md:text-8xl font-black tracking-wider text-white mb-6 mystic-glow reveal">
+
+            ВЕРИТИПЕДИА
+
+        </h1>
+
+
+        <p class="max-w-2xl text-base sm:text-lg text-gray-400 font-light leading-relaxed mb-10 reveal" data-i18n="heroSub">
+
+            Древний цифровой фолиант, классифицирующий загадочных сферических существ. Желтые шарики с улыбкой и их извращенные зеркальные отражения, заполонившие реальность в 2026 году.
+
+        </p>
+
+
+        <div class="reveal">
+
+            <a href="#catalog" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-black font-semibold tracking-wider hover:bg-yellow-400 transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.2)]" data-i18n="heroCta">
+
+                Исследовать каталог
+
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- Каталог видов (генерируется скриптом из speciesData) -->
+
+    <section id="catalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 z-10 relative">
+
+        <div class="text-center mb-10 reveal">
+
+            <h2 data-i18n="catalogTitle" class="font-cinzel text-3xl sm:text-4xl font-bold text-white mb-4">Классификация видов</h2>
+
+            <div class="w-16 h-0.5 bg-yellow-500 mx-auto"></div>
+
+            <p data-i18n="catalogSub" class="text-gray-400 text-sm mt-3">Выберите вид для детального изучения анатомии и поведенческих паттернов</p>
+
+        </div>
+
+
+        <!-- Архивный поисковый терминал -->
+
+        <div class="max-w-2xl mx-auto mb-8 reveal">
+
+            <div class="relative">
+
+                <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+
+                <input id="catalogSearch" type="text" data-i18n-placeholder="searchPlaceholder" data-i18n-aria="searchPlaceholder" aria-label="Поиск по архиву" placeholder="Поиск по архиву…" class="w-full bg-neutral-900/80 border border-white/10 rounded-full pl-11 pr-4 py-3 text-sm text-gray-200 placeholder-gray-500 outline-none focus:border-yellow-500/50 focus:ring-1 focus:ring-yellow-500/30 transition-colors">
+
+            </div>
+
+            <!-- Фильтры генерируются скриптом -->
+
+            <div id="catalogFilters" class="flex flex-wrap items-center justify-center gap-2 mt-5"></div>
+
+        </div>
+
+
+        <!-- Сетка карточек -->
+
+        <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+
+
+        <!-- Пустое состояние -->
+
+        <div id="catalogEmpty" class="hidden text-center py-20">
+
+            <p class="font-cinzel text-3xl text-gray-500 mb-3">Σ = ∅</p>
+
+            <p data-i18n="emptyCatalog" class="text-sm text-gray-500 font-light">По запросу ничего не найдено в архиве.</p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Секция контекста -->
+
+    <section id="about" class="max-w-4xl mx-auto px-4 py-20 border-t border-white/10 reveal">
+
+        <h2 data-i18n="aboutTitle" class="font-cinzel text-3xl font-bold text-white mb-6 text-center">О природе феномена</h2>
+
+        <div class="space-y-4 text-gray-400 font-light leading-relaxed">
+
+            <p data-i18n="aboutP1">
+
+                Согласно архивам Веритипедии, феномен зародился в начале 2026 года как вирусный визуальный мем, быстро эволюционировавший в самостоятельную цифровую мифологию. Каждый вид представляет собой эмоциональный спектр человечества, запечатанный в идеальной сферической форме.
+
+            </p>
+
+            <p data-i18n="aboutP2">
+
+                Черный фон книги подчеркивает первозданную пустоту интернета, из которой рождаются эти сущности, а их разноцветное свечение служит сигналом опасности или притяжения для неосторожных пользователей сети.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Подвал (Footer) -->
+
+    <footer id="contacts" class="border-t border-white/10 bg-[#030303] text-gray-400 py-16">
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+
+                <!-- Блок 1: О нас -->
+
+                <div>
+
+                    <a href="#hero" class="font-cinzel text-xl font-bold tracking-widest text-white hover:text-yellow-400 transition-colors inline-block mb-4">
+
+                        VERITY<span class="text-yellow-400">PEDIA</span>
+
+                    </a>
+
+                    <p data-i18n="footerDesc" class="text-sm font-light text-gray-400 leading-relaxed mb-4">
+
+                        «Веритипедия» — независимый академический и цифровой проект 2026 года, посвященный каталогизации аномальных сферических сущностей и эмоциональных спектров новой сетевой реальности.
+
+                    </p>
+
+                    <div class="text-xs font-mono text-yellow-500/80" data-i18n="footerStatus">
+
+                        Статус проекта: Активный архив
+
+                    </div>
+
+                </div>
+
+
+                <!-- Блок 2: Навигация -->
+
+                <div>
+
+                    <h3 data-i18n="footerSectionsTitle" class="font-cinzel text-lg font-semibold text-white mb-4 uppercase tracking-wider">Разделы</h3>
+
+                    <ul class="space-y-2 text-sm font-light">
+
+                        <li><a href="#hero" data-i18n="footerNavHome" class="hover:text-yellow-400 transition-colors">Главная страница</a></li>
+
+                        <li><a href="#catalog" data-i18n="footerNavCatalog" class="hover:text-yellow-400 transition-colors">Каталог видов</a></li>
+
+                        <li><a href="#about" data-i18n="footerNavAbout" class="hover:text-yellow-400 transition-colors">О феномене</a></li>
+
+                        <li><a href="#contacts" data-i18n="footerNavContacts" class="hover:text-yellow-400 transition-colors">Контакты редакции</a></li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- Блок 3: Контакты -->
+
+                <div>
+
+                    <h3 data-i18n="footerContactsTitle" class="font-cinzel text-lg font-semibold text-white mb-4 uppercase tracking-wider">Контакты</h3>
+
+                    <ul class="space-y-3 text-sm font-light">
+
+                        <li class="flex items-center gap-3">
+
+                            <svg class="w-5 h-5 text-yellow-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+
+                            <span>archive@veritypedia.sys</span>
+
+                        </li>
+
+                        <li class="flex items-center gap-3">
+
+                            <svg class="w-5 h-5 text-yellow-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+
+                            <span data-i18n="footerAddress">Центральный сервер-хранилище, Сектор 2026</span>
+
+                        </li>
+
+                        <li class="flex items-center gap-3">
+
+                            <svg class="w-5 h-5 text-yellow-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+
+                            <span data-i18n="footerPatrol">Патрулирование сети: Круглосуточно</span>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <!-- Копирайт подвала -->
+
+            <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-gray-600 gap-4">
+
+                <p>VERITYPEDIA PROJECT • 2026 EDITION. ALL RIGHTS RESERVED.</p>
+
+                <p>PROTECTED BY SECURE ENCRYPTION PROTOCOL</p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Модальное окно (Wiki Страница Вида) -->
+
+    <div id="wikiModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-xl opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true" aria-hidden="true">
+
+        <div id="modalContent" class="relative w-full max-w-2xl bg-neutral-900 border border-white/20 rounded-3xl p-6 sm:p-10 max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300 shadow-2xl">
+
+            <button id="modalCloseBtn" onclick="closeModal()" data-i18n-aria="closeModal" aria-label="Закрыть" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors">
+
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+
+            </button>
+
+            <div id="modalBody">
+
+                <!-- Динамический контент заполняется скриптом -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Скрипты интерактивности -->
+
+    <script>
+
+        // ===== СЛОВАРЬ ПЕРЕВОДОВ (i18n) =====
+
+        const LANGUAGES = ['ru', 'en'];
+
+        const I18N = {
+
+            ru: {
+
+                docTitle: 'ВЕРИТИПЕДИЯ — Энциклопедия мистических существ',
+
+                metaDesc: 'ВЕРИТИПЕДИЯ — древний цифровой фолиант, классифицирующий загадочных сферических существ. Каталог видов, досье и архив аномальных сущностей 2026 года.',
+
+                navSpecies: 'Виды',
+
+                navAbout: 'О феномене',
+
+                navContacts: 'Контакты',
+
+                langToggleTitle: 'Переключить язык / Switch language',
+
+                heroBadge: 'Энциклопедия аномальных сущностей • Релиз 2026',
+
+                heroSub: 'Древний цифровой фолиант, классифицирующий загадочных сферических существ. Желтые шарики с улыбкой и их извращенные зеркальные отражения, заполонившие реальность в 2026 году.',
+
+                heroCta: 'Исследовать каталог',
+
+                catalogTitle: 'Классификация видов',
+
+                catalogSub: 'Выберите вид для детального изучения анатомии и поведенческих паттернов',
+
+                searchPlaceholder: 'Поиск по архиву…',
+
+                filterAll: 'Все',
+
+                filterLow: 'Низкая',
+
+                filterMedium: 'Средняя',
+
+                filterModerate: 'Умеренная',
+
+                filterHigh: 'Высокая',
+
+                filterExtreme: 'Экстремальная',
+
+                favoritesChip: 'Избранные',
+
+                emptyCatalog: 'По запросу ничего не найдено в архиве.',
+
+                openDossier: 'Открыть досье',
+
+                aboutTitle: 'О природе феномена',
+
+                aboutP1: 'Согласно архивам Веритипедии, феномен зародился в начале 2026 года как вирусный визуальный мем, быстро эволюционировавший в самостоятельную цифровую мифологию. Каждый вид представляет собой эмоциональный спектр человечества, запечатанный в идеальной сферической форме.',
+
+                aboutP2: 'Черный фон книги подчеркивает первозданную пустоту интернета, из которой рождаются эти сущности, а их разноцветное свечение служит сигналом опасности или притяжения для неосторожных пользователей сети.',
+
+                footerDesc: '«Веритипедия» — независимый академический и цифровой проект 2026 года, посвященный каталогизации аномальных сферических сущностей и эмоциональных спектров новой сетевой реальности.',
+
+                footerStatus: 'Статус проекта: Активный архив',
+
+                footerSectionsTitle: 'Разделы',
+
+                footerNavHome: 'Главная страница',
+
+                footerNavCatalog: 'Каталог видов',
+
+                footerNavAbout: 'О феномене',
+
+                footerNavContacts: 'Контакты редакции',
+
+                footerContactsTitle: 'Контакты',
+
+                footerAddress: 'Центральный сервер-хранилище, Сектор 2026',
+
+                footerPatrol: 'Патрулирование сети: Круглосуточно',
+
+                modalDesc: 'Описание вида',
+
+                modalTraits: 'Ключевые черты',
+
+                dangerBadge: 'Угроза',
+
+                originBadge: 'Происхождение',
+
+                favAdd: 'В избранное',
+
+                favAdded: 'В избранном',
+
+                favTitle: 'Виды в избранном',
+
+                randomTitle: 'Случайный вид',
+
+                closeModal: 'Закрыть'
+
+            },
+
+            en: {
+
+                docTitle: 'VERITYPEDIA — Encyclopedia of Mystical Creatures',
+
+                metaDesc: 'VERITYPEDIA is an ancient digital folio classifying mysterious spherical creatures. A catalog of species, dossiers and an archive of anomalous entities of 2026.',
+
+                navSpecies: 'Species',
+
+                navAbout: 'The Phenomenon',
+
+                navContacts: 'Contacts',
+
+                langToggleTitle: 'Switch language / Переключить язык',
+
+                heroBadge: 'Encyclopedia of anomalous entities • 2026 Release',
+
+                heroSub: 'An ancient digital folio classifying mysterious spherical creatures. Yellow smiling orbs and their twisted mirror reflections that flooded reality in 2026.',
+
+                heroCta: 'Explore the catalog',
+
+                catalogTitle: 'Species classification',
+
+                catalogSub: 'Select a species for a detailed study of anatomy and behavioral patterns',
+
+                searchPlaceholder: 'Search the archive…',
+
+                filterAll: 'All',
+
+                filterLow: 'Low',
+
+                filterMedium: 'Medium',
+
+                filterModerate: 'Moderate',
+
+                filterHigh: 'High',
+
+                filterExtreme: 'Extreme',
+
+                favoritesChip: 'Favorites',
+
+                emptyCatalog: 'No records match your request in the archive.',
+
+                openDossier: 'Open dossier',
+
+                aboutTitle: 'On the nature of the phenomenon',
+
+                aboutP1: 'According to the Veritypedia archives, the phenomenon emerged in early 2026 as a viral visual meme that quickly evolved into an independent digital mythology. Each species represents an emotional spectrum of humanity sealed into a perfect spherical form.',
+
+                aboutP2: 'The black background of the book underscores the primordial emptiness of the internet from which these entities are born, while their multicolored glow serves as a signal of danger or attraction for careless network users.',
+
+                footerDesc: '“Veritypedia” is an independent academic digital project of 2026 dedicated to cataloging anomalous spherical entities and the emotional spectrums of the new network reality.',
+
+                footerStatus: 'Project status: Active archive',
+
+                footerSectionsTitle: 'Sections',
+
+                footerNavHome: 'Home page',
+
+                footerNavCatalog: 'Species catalog',
+
+                footerNavAbout: 'The phenomenon',
+
+                footerNavContacts: 'Editorial contacts',
+
+                footerContactsTitle: 'Contacts',
+
+                footerAddress: 'Central server vault, Sector 2026',
+
+                footerPatrol: 'Network patrol: Around the clock',
+
+                modalDesc: 'Species description',
+
+                modalTraits: 'Key traits',
+
+                dangerBadge: 'Threat',
+
+                originBadge: 'Origin',
+
+                favAdd: 'Add to favorites',
+
+                favAdded: 'In favorites',
+
+                favTitle: 'Favorite species',
+
+                randomTitle: 'Random species',
+
+                closeModal: 'Close'
+
+            }
+
+        };
+
+
+        // ===== СИСТЕМА ЯЗЫКОВ =====
+
+        let currentLang = getInitialLang();
+
+        function getInitialLang() {
+
+            try {
+
+                const saved = localStorage.getItem('veritypedia_lang');
+
+                if (saved && LANGUAGES.includes(saved)) return saved;
+
+            } catch (e) { /* localStorage недоступен */ }
+
+            return (navigator.language || 'ru').toLowerCase().startsWith('en') ? 'en' : 'ru';
+
+        }
+
+        function t(key) {
+
+            return I18N[currentLang][key] ?? I18N.ru[key] ?? key;
+
+        }
+
+        function pick(obj) {
+
+            return obj[currentLang] || obj.ru;
+
+        }
+
+        function toggleLang() {
+
+            setLang(currentLang === 'ru' ? 'en' : 'ru');
+
+        }
+
+        function setLang(lang) {
+
+            if (!LANGUAGES.includes(lang)) return;
+
+            currentLang = lang;
+
+            try { localStorage.setItem('veritypedia_lang', lang); } catch (e) { /* ignore */ }
+
+            applyStaticTranslations();
+
+            renderFilters();
+
+            renderCatalog();
+
+            // Если модалка открыта — перерисовать её содержимое
+
+            const isOpen = !modal.classList.contains('pointer-events-none');
+
+            if (isOpen && modal.dataset.speciesId) {
+
+                openModal(modal.dataset.speciesId);
+
+            }
+
+        }
+
+        function applyStaticTranslations() {
+
+            document.documentElement.lang = currentLang;
+
+            document.title = t('docTitle');
+
+            const metaDesc = document.querySelector('meta[name="description"]');
+
+            if (metaDesc) metaDesc.setAttribute('content', t('metaDesc'));
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+
+                const key = el.getAttribute('data-i18n');
+
+                const val = t(key);
+
+                if (val !== undefined && val !== null) el.textContent = val;
+
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+
+                el.setAttribute('placeholder', t(el.getAttribute('data-i18n-placeholder')));
+
+            });
+
+            document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+
+                el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria')));
+
+            });
+
+            document.querySelectorAll('[data-i18n-title]').forEach(el => {
+
+                el.setAttribute('title', t(el.getAttribute('data-i18n-title')));
+
+            });
+
+            const langToggleBtn = document.getElementById('langToggle');
+
+            if (langToggleBtn) langToggleBtn.textContent = currentLang === 'ru' ? 'EN' : 'RU';
+
+        }
+
+
+        // ===== БАЗА ДАННЫХ ВИДОВ =====
+
+        const speciesData = {
+
+            verity: {
+
+                id: 'verity',
+
+                color: '#FFD700',
+
+                img: 'Verity.webp',
+
+                number: '01',
+
+                dangerKey: 'low',
+
+                category: { ru: 'Базовый вид', en: 'Base form' },
+
+                danger: { ru: 'Низкий', en: 'Low' },
+
+                origin: { ru: 'Сетевой архив 2026', en: 'Network archive 2026' },
+
+                name: { ru: 'Верити', en: 'Verity' },
+
+                desc: {
+
+                    ru: 'Верити — прародитель всех сферических мемов. Его неизменная желтая улыбка символизирует наивный оптимизм эпохи раннего интернета. Существо безобидно до тех пор, пока пользователь не попытается поставить под сомнение его искренность.',
+
+                    en: 'Verity is the progenitor of all spherical memes. His unchanging yellow smile symbolizes the naive optimism of the early internet era. The creature is harmless until a user tries to question its sincerity.'
+
+                },
+
+                traits: {
+
+                    ru: ['Абсолютный позитив', 'Сферическая геометрия', 'Высокая вирусность'],
+
+                    en: ['Absolute positivity', 'Spherical geometry', 'High virality']
+
+                }
+
+            },
+
+            falsity: {
+
+                id: 'falsity',
+
+                color: '#0055FF',
+
+                img: 'Falsity.webp',
+
+                number: '02',
+
+                dangerKey: 'medium',
+
+                category: { ru: 'Аномалия', en: 'Anomaly' },
+
+                danger: { ru: 'Средний', en: 'Medium' },
+
+                origin: { ru: 'Зеркальные сервера', en: 'Mirror servers' },
+
+                name: { ru: 'Фолсити', en: 'Falsity' },
+
+                desc: {
+
+                    ru: 'Холодная синяя копия Верити. Фолсити питается дезинформацией и фальшивыми новостями. Приближение этого вида вызывает у пользователя чувство эстетического диссонанса и иллюзию контроля.',
+
+                    en: 'A cold blue copy of Verity. Falsity feeds on misinformation and fake news. Approaching this species evokes a sense of aesthetic dissonance and the illusion of control.'
+
+                },
+
+                traits: {
+
+                    ru: ['Цифровой обман', 'Холодное синее свечение', 'Глубокая меланхолия'],
+
+                    en: ['Digital deception', 'Cold blue glow', 'Deep melancholy']
+
+                }
+
+            },
+
+            lovity: {
+
+                id: 'lovity',
+
+                color: '#FF99BB',
+
+                img: 'Lovity.webp',
+
+                number: '03',
+
+                dangerKey: 'low',
+
+                category: { ru: 'Мутация', en: 'Mutation' },
+
+                danger: { ru: 'Низкий (но навязчивый)', en: 'Low (but clingy)' },
+
+                origin: { ru: 'Розовые чаты', en: 'Pink chats' },
+
+                name: { ru: 'Ловити', en: 'Lovity' },
+
+                desc: {
+
+                    ru: 'Ловити излучает волны гипертрофированной привязанности. Глаза-скобочки выдают постоянное состояние умиления. Опасность заключается в риске цифровой зависимости от постоянного одобрения.',
+
+                    en: 'Lovity radiates waves of hypertrophied attachment. Its eye-slits reveal a state of constant adoration. The danger lies in the risk of digital addiction to constant approval.'
+
+                },
+
+                traits: {
+
+                    ru: ['Токсичная забота', 'Гипнотический розовый тон', 'Эмпатический резонанс'],
+
+                    en: ['Toxic care', 'Hypnotic pink tone', 'Empathic resonance']
+
+                }
+
+            },
+
+            cruelty: {
+
+                id: 'cruelty',
+
+                color: '#FF2222',
+
+                img: 'Cruelty.webp',
+
+                number: '04',
+
+                dangerKey: 'extreme',
+
+                category: { ru: 'Хищник', en: 'Predator' },
+
+                danger: { ru: 'Экстремальный', en: 'Extreme' },
+
+                origin: { ru: 'Токсичные комментарии', en: 'Toxic comments' },
+
+                name: { ru: 'Круэлти', en: 'Cruelty' },
+
+                desc: {
+
+                    ru: 'Агрессивный красный хищник с нахмуренными бровями. Круэлти питается интернет-скандалами и хейтом. Любое взаимодействие с ним провоцирует резкий всплеск цифровой ярости.',
+
+                    en: 'An aggressive red predator with furrowed brows. Cruelty feeds on internet scandals and hate. Any interaction provokes a sharp surge of digital rage.'
+
+                },
+
+                traits: {
+
+                    ru: ['Сетевая агрессия', 'Красный спектр гнева', 'Провокация конфликтов'],
+
+                    en: ['Network aggression', 'Red spectrum of rage', 'Conflict provocation']
+
+                }
+
+            },
+
+            eclipsity: {
+
+                id: 'eclipsity',
+
+                color: '#FFFFFF',
+
+                img: 'Eclipsity.webp',
+
+                number: '05',
+
+                dangerKey: 'high',
+
+                category: { ru: 'Тень', en: 'Shadow' },
+
+                danger: { ru: 'Высокий', en: 'High' },
+
+                origin: { ru: 'Темная сеть', en: 'Dark web' },
+
+                name: { ru: 'Экслипсити', en: 'Eclipsity' },
+
+                desc: {
+
+                    ru: 'Мрачный черный шарик с сияющими белыми глазами и огромной зубастой пастью. Экслипсити поглощает позитивные комментарии и превращает радостные треды в экзистенциальную пустоту.',
+
+                    en: 'A grim black orb with glowing white eyes and a huge toothy maw. Eclipsity devours positive comments and turns joyful threads into existential void.'
+
+                },
+
+                traits: {
+
+                    ru: ['Поглощение света', 'Зубастая ухмылка', 'Экзистенциальный ужас'],
+
+                    en: ['Light absorption', 'Toothy grin', 'Existential dread']
+
+                }
+
+            },
+
+            curiosity: {
+
+                id: 'curiosity',
+
+                color: '#00CC44',
+
+                img: 'Curiosity.webp',
+
+                number: '06',
+
+                dangerKey: 'moderate',
+
+                category: { ru: 'Исследователь', en: 'Researcher' },
+
+                danger: { ru: 'Умеренный', en: 'Moderate' },
+
+                origin: { ru: 'Архивы конспирологов', en: 'Conspiracy archives' },
+
+                name: { ru: 'Кьюриосити', en: 'Curiosity' },
+
+                desc: {
+
+                    ru: 'Зеленый скептик с приподнятой бровью. Кьюриосити никогда не верит на слово и постоянно ищет скрытый подтекст в коде страниц и постах пользователей.',
+
+                    en: 'A green skeptic with a raised eyebrow. Curiosity never takes things at face value and constantly seeks hidden meanings in page code and user posts.'
+
+                },
+
+                traits: {
+
+                    ru: ['Постоянный скепсис', 'Зеленый цвет расследования', 'Поиск заговоров'],
+
+                    en: ['Constant skepticism', 'Investigation green', 'Conspiracy hunting']
+
+                }
+
+            }
+
+        };
+
+
+        // Уровни угрозы для фильтров
+
+        const DANGER_LEVELS = [
+
+            { key: 'all', color: '#FFFFFF', label: { ru: 'Все', en: 'All' } },
+
+            { key: 'low', color: '#00CC44', label: { ru: 'Низкая', en: 'Low' } },
+
+            { key: 'medium', color: '#0055FF', label: { ru: 'Средняя', en: 'Medium' } },
+
+            { key: 'moderate', color: '#FFD700', label: { ru: 'Умеренная', en: 'Moderate' } },
+
+            { key: 'high', color: '#FF8800', label: { ru: 'Высокая', en: 'High' } },
+
+            { key: 'extreme', color: '#FF2222', label: { ru: 'Экстремальная', en: 'Extreme' } }
+
+        ];
+
+
+        // ===== ГЕКС → RGBA =====
+
+        function hexToRgba(hex, alpha) {
+
+            const h = hex.replace('#', '');
+
+            const r = parseInt(h.substring(0, 2), 16);
+
+            const g = parseInt(h.substring(2, 4), 16);
+
+            const b = parseInt(h.substring(4, 6), 16);
+
+            return `rgba(${r},${g},${b},${alpha})`;
+
+        }
+
+
+        // ===== ИЗБРАННОЕ =====
+
+        const FAVORITES_KEY = 'veritypedia_favorites';
+
+        function getFavorites() {
+
+            try {
+
+                const raw = localStorage.getItem(FAVORITES_KEY);
+
+                const list = raw ? JSON.parse(raw) : [];
+
+                return Array.isArray(list) ? list : [];
+
+            } catch (e) {
+
+                return [];
+
+            }
+
+        }
+
+        function saveFavorites(list) {
+
+            try {
+
+                localStorage.setItem(FAVORITES_KEY, JSON.stringify(list));
+
+            } catch (e) {
+
+                // localStorage недоступен — молча игнорируем
+
+            }
+
+        }
+
+        function isFavorite(id) {
+
+            return getFavorites().includes(id);
+
+        }
+
+        function renderFavoriteButton(id) {
+
+            if (isFavorite(id)) {
+
+                return `<button id="favBtn" onclick="toggleFavorite('${id}')" class="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-yellow-400/60 bg-yellow-500/15 text-yellow-400 text-sm font-semibold tracking-wider hover:bg-yellow-500/25 transition-colors">
+
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+
+                    ${t('favAdded')}
+
+                </button>`;
+
+            }
+
+            return `<button id="favBtn" onclick="toggleFavorite('${id}')" class="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 bg-white/5 text-gray-300 text-sm font-semibold tracking-wider hover:border-yellow-400 hover:text-yellow-400 transition-colors">
+
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+
+                ${t('favAdd')}
+
+            </button>`;
+
+        }
+
+        function toggleFavorite(id) {
+
+            const list = getFavorites();
+
+            const index = list.indexOf(id);
+
+            if (index === -1) {
+
+                list.push(id);
+
+            } else {
+
+                list.splice(index, 1);
+
+            }
+
+            saveFavorites(list);
+
+            refreshFavoritesUI();
+
+            const btn = document.getElementById('favBtn');
+
+            if (btn) btn.outerHTML = renderFavoriteButton(id);
+
+        }
+
+        function updateFavoritesCounter() {
+
+            const countEl = document.getElementById('favCount');
+
+            if (countEl) countEl.textContent = getFavorites().length;
+
+            const btn = document.getElementById('favToggleBtn');
+
+            if (btn) btn.classList.toggle('fav-active', favoritesOnly);
+
+        }
+
+        function refreshFavoritesUI() {
+
+            updateFavoritesCounter();
+
+            renderFilters();
+
+            if (favoritesOnly) renderCatalog();
+
+        }
+
+        // ===== ПОИСК И ФИЛЬТРЫ КАТАЛОГА =====
+
+        let activeDangerFilter = 'all';
+
+        let favoritesOnly = false;
+
+        function getFilteredSpecies() {
+
+            const input = document.getElementById('catalogSearch');
+
+            const q = (input ? input.value : '').trim().toLowerCase();
+
+            const favs = getFavorites();
+
+            const lang = currentLang;
+
+            return Object.values(speciesData).filter(s => {
+
+                if (activeDangerFilter !== 'all' && s.dangerKey !== activeDangerFilter) return false;
+
+                if (favoritesOnly && !favs.includes(s.id)) return false;
+
+                if (!q) return true;
+
+                const haystack = [
+
+                    s.name[lang],
+
+                    s.category[lang],
+
+                    s.danger[lang],
+
+                    s.origin[lang],
+
+                    s.desc[lang],
+
+                    ...s.traits[lang]
+
+                ].join(' ').toLowerCase();
+
+                return haystack.includes(q);
+
+            });
+
+        }
+
+        function speciesCardHtml(s) {
+
+            const color = s.color;
+
+            const vars = [
+
+                `--sc:${color}`,
+
+                `--cb:${hexToRgba(color, 0.2)}`,
+
+                `--cbh:${hexToRgba(color, 0.8)}`,
+
+                `--ab:${hexToRgba(color, 0.45)}`,
+
+                `--abh:${hexToRgba(color, 1)}`,
+
+                `--cs:${hexToRgba(color, 0.06)}`,
+
+                `--csh:${hexToRgba(color, 0.22)}`
+
+            ].join(';');
+
+            const name = pick(s.name);
+
+            return `
+
+                <div onclick="openModal('${s.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('${s.id}');}" role="button" tabindex="0" aria-label="${name}" class="species-card group relative bg-neutral-950/80 rounded-2xl p-6 transition-all duration-500 cursor-pointer overflow-hidden" style="${vars};">
+
+                    <div class="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                    <div class="relative z-10 flex flex-col items-center text-center">
+
+                        <div class="species-avatar w-32 h-32 sm:w-40 sm:h-40 mb-6 rounded-full overflow-hidden group-hover:scale-105 transition-all duration-500 shadow-lg">
+
+                            <img src="${s.img}" alt="${name}" loading="lazy" width="160" height="160" class="w-full h-full object-cover">
+
+                        </div>
+
+                        <span class="species-cat-label text-xs font-mono tracking-widest mb-1 uppercase">${pick(s.category)} #${s.number}</span>
+
+                        <h3 class="font-cinzel text-2xl font-bold text-white mb-3">${name}</h3>
+
+                        <p class="species-desc text-sm line-clamp-3">${pick(s.desc)}</p>
+
+                        <div class="species-open mt-6 flex items-center gap-2 text-xs font-semibold tracking-wider uppercase">
+
+                            <span>${t('openDossier')}</span>
+
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+
+                        </div>
+
+                    </div>
+
+                </div>`;
+
+        }
+
+        function renderCatalog() {
+
+            const grid = document.getElementById('catalogGrid');
+
+            const empty = document.getElementById('catalogEmpty');
+
+            const list = getFilteredSpecies();
+
+            if (!list.length) {
+
+                grid.innerHTML = '';
+
+                empty.classList.remove('hidden');
+
+                return;
+
+            }
+
+            empty.classList.add('hidden');
+
+            grid.innerHTML = list.map(speciesCardHtml).join('');
+
+        }
+
+        function dangerChipHtml(l) {
+
+            const active = activeDangerFilter === l.key;
+
+            const label = pick(l.label);
+
+            const border = hexToRgba(l.color, active ? 1 : 0.35);
+
+            const bg = active ? hexToRgba(l.color, 0.85) : '';
+
+            return `
+
+                <button onclick="setDangerFilter('${l.key}')" class="px-4 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider border transition-all duration-300 ${active ? 'text-black font-semibold' : 'text-gray-400 hover:text-white'}" style="border-color:${border};${bg ? `background:${bg};` : ''}">
+
+                    ${label}
+
+                </button>`;
+
+        }
+
+        function favoritesChipHtml(count) {
+
+            const activeClass = favoritesOnly
+
+                ? 'text-black bg-yellow-400 border-yellow-400 font-semibold'
+
+                : 'text-yellow-400/90 border-yellow-500/35 hover:border-yellow-400';
+
+            return `
+
+                <button onclick="toggleFavoritesOnly()" class="px-4 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider border transition-all duration-300 flex items-center gap-2 ${activeClass}">
+
+                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+
+                    <span>${t('favoritesChip')} (${count})</span>
+
+                </button>`;
+
+        }
+
+        function renderFilters() {
+
+            const container = document.getElementById('catalogFilters');
+
+            if (!container) return;
+
+            const favCount = getFavorites().length;
+
+            container.innerHTML = DANGER_LEVELS.map(dangerChipHtml).join('')
+
+                + '<span class="w-px h-6 bg-white/10 mx-2 self-center hidden sm:block"></span>'
+
+                + favoritesChipHtml(favCount);
+
+        }
+
+        function setDangerFilter(key) {
+
+            activeDangerFilter = key;
+
+            if (key !== 'all') favoritesOnly = false;
+
+            renderFilters();
+
+            renderCatalog();
+
+        }
+
+        function toggleFavoritesOnly() {
+
+            favoritesOnly = !favoritesOnly;
+
+            if (favoritesOnly) activeDangerFilter = 'all';
+
+            renderFilters();
+
+            renderCatalog();
+
+            updateFavoritesCounter();
+
+        }
+
+
+        // ===== МОДАЛЬНОЕ ОКНО =====
+
+        const modal = document.getElementById('wikiModal');
+
+        const modalContent = document.getElementById('modalContent');
+
+        const modalBody = document.getElementById('modalBody');
+
+        function modalBodyHtml(s) {
+
+            const color = s.color;
+
+            const name = pick(s.name);
+
+            return `
+
+                <div class="flex flex-col sm:flex-row items-center gap-6 mb-8">
+
+                    <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2 shadow-2xl flex-shrink-0" style="border-color:${color}; box-shadow: 0 0 25px ${hexToRgba(color, 0.25)};">
+
+                        <img src="${s.img}" alt="${name}" class="w-full h-full object-cover">
+
+                    </div>
+
+                    <div>
+
+                        <span class="text-xs font-mono tracking-widest uppercase" style="color:${color}">${pick(s.category)} #${s.number}</span>
+
+                        <h2 class="font-cinzel text-3xl sm:text-4xl font-bold text-white mt-1 mb-2">${name}</h2>
+
+                        <div class="flex flex-wrap gap-2 text-xs">
+
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300">${t('dangerBadge')}: ${pick(s.danger)}</span>
+
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300">${t('originBadge')}: ${pick(s.origin)}</span>
+
+                        </div>
+
+                        ${renderFavoriteButton(s.id)}
+
+                    </div>
+
+                </div>
+
+                <div class="space-y-6 text-gray-300 font-light leading-relaxed">
+
+                    <div>
+
+                        <h4 class="font-cinzel text-lg font-semibold text-white mb-2">${t('modalDesc')}</h4>
+
+                        <p>${pick(s.desc)}</p>
+
+                    </div>
+
+                    <div>
+
+                        <h4 class="font-cinzel text-lg font-semibold text-white mb-2">${t('modalTraits')}</h4>
+
+                        <div class="flex flex-wrap gap-2">
+
+                            ${pick(s.traits).map(tr => `<span class="px-3 py-1 rounded-lg bg-neutral-800 text-xs text-gray-200 border border-white/5">${tr}</span>`).join('')}
+
+                        </div>
+
+                    </div>
+
+                </div>`;
+
+        }
+
+        function openModal(id) {
+
+            const data = speciesData[id];
+
+            if (!data) return;
+
+            modal.dataset.speciesId = id;
+
+            modalBody.innerHTML = modalBodyHtml(data);
+
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+
+            modal.setAttribute('aria-hidden', 'false');
+
+            modalContent.classList.remove('scale-95');
+
+            document.body.style.overflow = 'hidden';
+
+            const closeBtn = document.getElementById('modalCloseBtn');
+
+            if (closeBtn) closeBtn.focus();
+
+        }
+
+        function closeModal() {
+
+            modal.classList.add('opacity-0', 'pointer-events-none');
+
+            modal.setAttribute('aria-hidden', 'true');
+
+            modalContent.classList.add('scale-95');
+
+            document.body.style.overflow = '';
+
+        }
+
+        modal.addEventListener('click', (e) => {
+
+            if (e.target === modal) closeModal();
+
+        });
+
+        document.addEventListener('keydown', (e) => {
+
+            if (e.key === 'Escape') {
+
+                if (!modal.classList.contains('pointer-events-none')) closeModal();
+
+            }
+
+        });
+
+
+        // ===== СЛУЧАЙНЫЙ ВИД =====
+
+        function openRandomSpecies() {
+
+            const ids = Object.keys(speciesData);
+
+            openModal(ids[Math.floor(Math.random() * ids.length)]);
+
+        }
+
+
+        // ===== АНИМАЦИЯ ПОЯВЛЕНИЯ ПРИ ПРОКРУТКЕ =====
+
+        let revealObserver = null;
+
+        function initReveal() {
+
+            if (!revealObserver) {
+
+                revealObserver = new IntersectionObserver((entries) => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add('active');
+
+                            revealObserver.unobserve(entry.target);
+
+                        }
+
+                    });
+
+                }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+            }
+
+            document.querySelectorAll('.reveal:not(.active)').forEach(el => revealObserver.observe(el));
+
+        }
+
+
+        // ===== ИНИЦИАЛИЗАЦИЯ =====
+
+        applyStaticTranslations();
+
+        updateFavoritesCounter();
+
+        renderFilters();
+
+        renderCatalog();
+
+        initReveal();
+
+        document.getElementById('catalogSearch').addEventListener('input', renderCatalog);
+
+    </script>
+
+</body>
+
+</html>

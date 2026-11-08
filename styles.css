@@ -1,0 +1,104 @@
+/* ============================================================
+   ВЕРИТИПЕДИА — стили страницы
+   Подключается из index.html.
+   Базовая типографика и цвета задаются также через Tailwind CDN
+   (конфиг tailwind.config в index.html).
+   ============================================================ */
+
+/* Базовые стили страницы */
+body {
+    background-color: #050505;
+    color: #e5e5e5;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Мистическое свечение заголовков */
+.mystic-glow {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+}
+
+/* Эффект появления при скролле */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Карточки каталога используют цвета из CSS-переменных speciesData */
+.species-card {
+    border: 1px solid var(--cb);
+    box-shadow: 0 0 15px var(--cs);
+}
+
+.species-card:hover {
+    border-color: var(--cbh) !important;
+    box-shadow: 0 0 30px var(--csh) !important;
+}
+
+.species-avatar {
+    border: 2px solid var(--ab);
+}
+
+.species-card:hover .species-avatar {
+    border-color: var(--abh) !important;
+}
+
+.species-cat-label,
+.species-open {
+    color: var(--sc);
+}
+
+.species-desc {
+    color: #9ca3af;
+    transition: color 0.4s;
+}
+
+.species-card:hover .species-desc {
+    color: #e5e5e5;
+}
+
+/* Активное состояние кнопки избранного */
+#favToggleBtn.fav-active {
+    color: #facc15;
+    border-color: rgba(250, 204, 21, 0.45);
+    background: rgba(250, 204, 21, 0.08);
+}
+
+/* Кастомный скроллбар */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #222;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #444;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
