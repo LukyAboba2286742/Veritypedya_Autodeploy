@@ -1,0 +1,20 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "selector-id-pattern": null,
+    "selector-class-pattern": null,
+    "custom-property-pattern": null,
+    "custom-property-empty-line-before": null,
+    "color-hex-length": null,
+    "color-function-notation": null,
+    "color-function-notation": null,
+    "alpha-value-notation": null,
+    "declaration-no-important": null,
+    "no-descending-specificity": null,
+    "font-family-no-missing-generic-family-keyword": null,
+    "selector-pseudo-element-no-unknown": [
+      true,
+      { "ignorePseudoElements": ["/^::-webkit-/"] }
+    ]
+  }
+}
