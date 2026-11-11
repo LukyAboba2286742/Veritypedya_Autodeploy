@@ -1,13 +1,9 @@
-# Workflow автоматической публикации статического сайта на GitHub Pages.
-# Файл размещается в репозитории по пути: .github/workflows/deploy.yml
 name: Deploy static site
 
-# Триггер: workflow запускается при каждом push в ветку main
 on:
   push:
     branches: [ main ]
 
-# Права доступа, необходимые для публикации на GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -20,40 +16,31 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      # Шаг 1. Скопировать файлы репозитория на виртуальную машину
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Шаг 2. Установить Node.js (нужен для работы линтеров)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
-      # Шаг 3. Установить зависимости (htmlhint, stylelint и др.)
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
-      # Шаг 4. ПРОВЕРКА HTML (если есть ошибки - workflow упадет)
       - name: Lint HTML
         run: npm run lint:html
 
-      # Шаг 5. ПРОВЕРКА CSS (если есть ошибки - workflow упадет)
       - name: Lint CSS
         run: npm run lint:css
 
-      # Шаг 6. Подготовить окружение GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # Шаг 7. Упаковать файлы сайта в артефакт
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
 
-      # Шаг 8. Опубликовать артефакт на GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
