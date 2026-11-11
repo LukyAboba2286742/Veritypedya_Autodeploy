@@ -12,9 +12,10 @@ body {
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
 }
+
 /* Мистическое свечение заголовков */
 .mystic-glow {
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+    text-shadow: 0 0 20px rgb(255 255 255 / 15%);
 }
 
 /* Эффект появления при скролле */
@@ -65,8 +66,8 @@ body {
 /* Активное состояние кнопки избранного */
 #favToggleBtn.fav-active {
     color: #facc15;
-    border-color: rgba(250, 204, 21, 0.45);
-    background: rgba(250, 204, 21, 0.08);
+    border-color: rgb(250 204 21 / 45%);
+    background: rgb(250 204 21 / 8%);
 }
 
 /* Кастомный скроллбар */
@@ -101,5 +102,3 @@ body {
         transition-duration: 0.01ms !important;
     }
 }
-    
-
