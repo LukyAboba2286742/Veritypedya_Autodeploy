@@ -11,8 +11,7 @@ body {
     color: #e5e5e5;
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
-
-
+}
 /* Мистическое свечение заголовков */
 .mystic-glow {
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
@@ -100,5 +99,7 @@ body {
     *::after {
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
+    }
+}
     
 
